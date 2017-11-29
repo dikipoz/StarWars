@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class MyGdxGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Background background;
-	Ship ship;
-	Asteroids[] asteroids;
+	private SpriteBatch batch;
+	private Background background;
+	private Ship ship;
+	private Asteroids[] asteroids;
 	static Bullets[] bullets;
 	
 	public void create () {
@@ -39,7 +39,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		}
 		
 		for (int i = 0; i < bullets.length; i++) {
-			if (bullets[i].active) {
+			if (bullets[i].getActive()) {
 				bullets[i].render(batch);
 			}
 		}
@@ -54,7 +54,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		}
 		
 		for(int i = 0; i < bullets.length; i++) {
-			if (bullets[i].active) {
+			if (bullets[i].getActive()) {
 				bullets[i].update();
 			}
 		}

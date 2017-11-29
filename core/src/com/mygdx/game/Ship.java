@@ -56,7 +56,7 @@ public class Ship {
 	}
 	public void fire() {
 		for (int i = 0; i < MyGdxGame.bullets.length; i++) {
-			if (!MyGdxGame.bullets[i].active) {
+			if (!MyGdxGame.bullets[i].getActive()) {
 				MyGdxGame.bullets[i].activate(position.x, position.y);
 				break;
 			}

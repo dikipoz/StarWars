@@ -6,10 +6,10 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Bullets {
 
-	Texture texture;
-	Vector2 position;
-	float speed;
-	boolean active;
+	private Texture texture;
+	private Vector2 position;
+	private float speed;
+	private boolean active;
 	
 	public Bullets() {
 		texture = new Texture("bullet.png");
@@ -36,5 +36,11 @@ public class Bullets {
 		if (position.x > 1280) {
 			deactivate();
 		}
+	}
+	public boolean getActive() {
+		return active;
+	}
+	public void dispose() {
+		texture.dispose();
 	}
 }
