@@ -18,8 +18,7 @@ public class Ship {
 		texture = new Texture("spaceship64.png");
 		position = new Vector2(32, 400);
 		speed = 7;
-		fireRate = 4;
-		fireCounter = 0;
+		fireRate = 6;
 	}
 
 	public void render(SpriteBatch batch){
@@ -29,10 +28,11 @@ public class Ship {
 	public void update(){
 		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
 			fireCounter++;
-			if(fireCounter >= fireRate) {
+			if (fireCounter >= fireRate){
 				fireCounter = 0;
 				fire();
 			}
+			
 		}
 		if(Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){
 			if(position.x > Gdx.input.getX())
@@ -54,9 +54,10 @@ public class Ship {
 		if(position.y < 0)
 			position.y = 0;
 	}
-	public void fire() {
-		for (int i = 0; i < MyGdxGame.bullets.length; i++) {
-			if (!MyGdxGame.bullets[i].getActive()) {
+	
+	public void fire(){
+		for(int i = 0; i < MyGdxGame.bullets.length; i++){
+			if(!MyGdxGame.bullets[i].isActive()){
 				MyGdxGame.bullets[i].activate(position.x, position.y);
 				break;
 			}

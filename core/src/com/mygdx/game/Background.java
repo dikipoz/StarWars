@@ -9,10 +9,7 @@ public class Background {
 	private Texture texture;
 	private Texture textureStars;
 	private Stars[] stars;
-<<<<<<< HEAD
-=======
 	
->>>>>>> 11ecea2d76c29ded513d69220cff92f0d5b7049c
 	
 	
 	class Stars{
@@ -58,10 +55,7 @@ public class Background {
 	public Background() {
 		texture = new Texture("space1289.png");
 		textureStars = new Texture("star16.png");
-<<<<<<< HEAD
-=======
 		
->>>>>>> 11ecea2d76c29ded513d69220cff92f0d5b7049c
 		stars = new Stars[50];
 		for(int i = 0; i < stars.length; i++){
 			stars[i] = new Stars();
@@ -71,10 +65,7 @@ public class Background {
 	public void render(SpriteBatch batch){
 		batch.draw(texture, -t, 0);
 		batch.draw(texture, -t + 1280, 0);
-<<<<<<< HEAD
-=======
 		
->>>>>>> 11ecea2d76c29ded513d69220cff92f0d5b7049c
 		for(int i = 0; i < stars.length; i++){
 			batch.draw(textureStars, stars[i].position.x, stars[i].position.y, 8,8,16,16,stars[i].size,stars[i].size,0,0,0,16,16,false,false);
 		}

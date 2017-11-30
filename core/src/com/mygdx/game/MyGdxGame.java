@@ -10,7 +10,7 @@ public class MyGdxGame extends ApplicationAdapter {
 	private Background background;
 	private Ship ship;
 	private Asteroids[] asteroids;
-	static Bullets[] bullets;
+	static Bullet[] bullets;
 	
 	public void create () {
 		batch = new SpriteBatch();
@@ -20,9 +20,9 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < asteroids.length; i++){
 			asteroids[i] = new Asteroids();
 		}
-		bullets = new Bullets[200];
-		for (int i = 0; i < bullets.length; i++) {
-			bullets[i] = new Bullets();
+		bullets = new Bullet[200];
+		for(int i = 0; i < bullets.length; i++){
+			bullets[i] = new Bullet();
 		}
 	}
 
@@ -37,11 +37,8 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < asteroids.length; i++){
 			asteroids[i].render(batch);
 		}
-		
-		for (int i = 0; i < bullets.length; i++) {
-			if (bullets[i].getActive()) {
-				bullets[i].render(batch);
-			}
+		for(int i = 0; i < bullets.length; i++){
+			bullets[i].render(batch);
 		}
 		batch.end();
 	}
@@ -52,12 +49,12 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < asteroids.length; i++){
 			asteroids[i].update();
 		}
-		
-		for(int i = 0; i < bullets.length; i++) {
-			if (bullets[i].getActive()) {
+		for(int i = 0; i < bullets.length; i++){
+			if (bullets[i].isActive()){
 				bullets[i].update();
 			}
 		}
+		
 	}
 	
 	public void dispose () {
