@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -13,11 +14,13 @@ public class Ship {
 	private Texture texture;
 	private int fireCounter;
 	private int fireRate;
+	private Sound sound;
 	
 	public Ship() {
 		texture = new Texture("spaceship64.png");
+		sound = Gdx.audio.newSound(Gdx.files.internal("sound.wav"));
 		position = new Vector2(32, 400);
-		speed = 7;
+		speed = 9;
 		fireRate = 6;
 	}
 
@@ -30,9 +33,9 @@ public class Ship {
 			fireCounter++;
 			if (fireCounter >= fireRate){
 				fireCounter = 0;
+				sound.play();
 				fire();
 			}
-			
 		}
 		if(Gdx.input.isButtonPressed(Input.Buttons.RIGHT)){
 			if(position.x > Gdx.input.getX())
@@ -66,5 +69,6 @@ public class Ship {
 	
 	public void dispose(){
 		texture.dispose();
+		sound.dispose();
 	}
 }

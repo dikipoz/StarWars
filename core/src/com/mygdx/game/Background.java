@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -9,7 +12,7 @@ public class Background {
 	private Texture texture;
 	private Texture textureStars;
 	private Stars[] stars;
-	
+	private Music soundBackground;
 	
 	
 	class Stars{
@@ -48,14 +51,15 @@ public class Background {
 				}
 			}
 		}
-		
 	}
 	
 	
 	public Background() {
+		soundBackground = Gdx.audio.newMusic(Gdx.files.internal("matrix.mp3"));
 		texture = new Texture("space1289.png");
 		textureStars = new Texture("star16.png");
-		
+		soundBackground.setVolume(0.08f);
+		soundBackground.play();
 		stars = new Stars[50];
 		for(int i = 0; i < stars.length; i++){
 			stars[i] = new Stars();
@@ -82,6 +86,7 @@ public class Background {
 	public void dispose(){
 		texture.dispose();
 		textureStars.dispose();
+		soundBackground.dispose();
 	}
 
 }
