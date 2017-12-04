@@ -2,7 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -14,7 +13,8 @@ public class MyGdxGame extends ApplicationAdapter {
 	
 	private Asteroids[] asteroids;
 	
-	static Bullet[] bullets;
+	static Bullet[] bulletsUp;
+	static Bullet[] bulletsDown;
 	private Texture textureBullet;
 	
 	public void create () {
@@ -26,9 +26,11 @@ public class MyGdxGame extends ApplicationAdapter {
 			asteroids[i] = new Asteroids();
 		}
 		textureBullet = new Texture("Bullet.png");
-		bullets = new Bullet[200];
-		for(int i = 0; i < bullets.length; i++){
-			bullets[i] = new Bullet();
+		bulletsUp = new Bullet[200];
+		bulletsDown = new Bullet[200];
+		for(int i = 0; i < bulletsUp.length; i++){
+			bulletsUp[i] = new Bullet();
+			bulletsDown[i] = new Bullet();
 		}
 	}
 
@@ -42,9 +44,13 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < asteroids.length; i++){
 			asteroids[i].render(batch);
 		}
-		for(int i = 0; i < bullets.length; i++){
-			if (bullets[i].isActive())
-			batch.draw(textureBullet, bullets[i].position.x - 12, bullets[i].position.y);
+		for(int i = 0; i < bulletsUp.length; i++){
+			if (bulletsUp[i].isActive())
+			batch.draw(textureBullet, bulletsUp[i].position.x, bulletsUp[i].position.y);
+		}
+		for(int i = 0; i < bulletsDown.length; i++){
+			if (bulletsDown[i].isActive())
+			batch.draw(textureBullet, bulletsDown[i].position.x, bulletsDown[i].position.y);
 		}
 		batch.end();
 	}
@@ -55,13 +61,25 @@ public class MyGdxGame extends ApplicationAdapter {
 		for(int i = 0; i < asteroids.length; i++){
 			asteroids[i].update();
 		}
-		for(int i = 0; i < bullets.length; i++){
-			if (bullets[i].isActive()){
-				bullets[i].update();
+		for(int i = 0; i < bulletsUp.length; i++){
+			if (bulletsUp[i].isActive()){
+				bulletsUp[i].update();
 				for(int j = 0; j < asteroids.length; j++){
-					if(asteroids[j].hitArea.contains(bullets[i].position)){
+					if(asteroids[j].hitArea.contains(bulletsUp[i].position)){
 						asteroids[j].takeDamage();
-						bullets[i].deactivate();
+						bulletsUp[i].deactivate();
+						break;
+					}
+				}
+			}
+		}
+		for(int i = 0; i < bulletsDown.length; i++){
+			if (bulletsDown[i].isActive()){
+				bulletsDown[i].update();
+				for(int j = 0; j < asteroids.length; j++){
+					if(asteroids[j].hitArea.contains(bulletsDown[i].position)){
+						asteroids[j].takeDamage();
+						bulletsDown[i].deactivate();
 						break;
 					}
 				}

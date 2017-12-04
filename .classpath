@@ -4,6 +4,5 @@
 	<classpathentry kind="src" path="core/src"/>
 	<classpathentry kind="src" path="desktop/src"/>
 	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
-	<classpathentry kind="lib" path="/StarComm43.zip_expanded/StarComm43/desktop/build/libs/desktop-1.0.jar"/>
 	<classpathentry kind="output" path="bin1"/>
 </classpath>

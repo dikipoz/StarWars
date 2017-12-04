@@ -31,29 +31,29 @@ public class Asteroids {
 		
 		angle = 0;
 		rotate = (Math.random() * 1) <= 0.5 ? -1 : 1;
-		type = (int) (Math.random() * 5);
+		type = (int) (Math.random() * 4);
 	
 		scale = 1.3f + type * 0.1f;
-		maxHp = (int) (type);
+		maxHp = (int) (type) + 5;
 		hp = maxHp;
 		hitArea = new Circle(position, 27 * scale);
 	}
 
 	public void render(SpriteBatch batch) {
-		batch.draw(texture, position.x - 32, position.y, 32, 32, 64, 64, scale, scale, angle * rotate, type * 64,
+		batch.draw(texture, position.x - 32, position.y - 32, 32, 32, 64, 64, scale, scale, angle * rotate, type * 64,
 				0, 64, 64, false, false);
 	}
 	
 	public void recreate(){
 		position.x = 1280 + (float) Math.random() * 1280;
-		position.y = (float) Math.random() * 736;
+		position.y = (float) Math.random() * 716;
 		speed = 2 + (float) Math.random() * 2;
 		
 		angle = 0;
 		rotate = (Math.random() * 1) <= 0.5 ? -1 : 1;
-		type = (int) (Math.random() * 5);
+		type = (int) (Math.random() * 4);
 		scale = 1f + type * 0.1f;
-		maxHp = (int) (type);
+		maxHp = (int) (type) + 5;
 		hp = maxHp;
 		hitArea.radius = 27 * scale;
 		//System.out.println(scale + "   " + hitArea.radius);

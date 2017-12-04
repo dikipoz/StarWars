@@ -59,9 +59,15 @@ public class Ship {
 	}
 	
 	public void fire(){
-		for(int i = 0; i < MyGdxGame.bullets.length; i++){
-			if(!MyGdxGame.bullets[i].isActive()){
-				MyGdxGame.bullets[i].activate(position.x, position.y);
+		for(int i = 0; i < MyGdxGame.bulletsUp.length; i++){
+			if(!MyGdxGame.bulletsUp[i].isActive()){
+				MyGdxGame.bulletsUp[i].activate(position.x, position.y + 42);
+				break;
+			}
+		}
+		for(int i = 0; i < MyGdxGame.bulletsDown.length; i++){
+			if(!MyGdxGame.bulletsDown[i].isActive()){
+				MyGdxGame.bulletsDown[i].activate(position.x, position.y + 33);
 				break;
 			}
 		}
